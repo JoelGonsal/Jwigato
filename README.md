@@ -2,6 +2,11 @@
 
 ### Joel's Personal Food Delivery Application
 
+Joel Gonsalves
+
+MCA Golden Batch Project Trainin • 2026
+
+
 JWIGATO is a full-stack Food Delivery web application developed using Spring Boot Microservices. The project demonstrates user authentication, food ordering, REST API communication, and MySQL database integration through separate User and Order microservices.
 
 ## Features
@@ -31,4 +36,21 @@ JWIGATO is a full-stack Food Delivery web application developed using Spring Boo
 - Maven
 
 ## Project Structure
+
+User Service
+├── User Authentication
+├── Registration
+└── User Management
+
+Order Service
+├── Place Orders
+├── View Orders
+└── REST API Communication
+
+
+## Developed By
+
+Joel Gonsalves
+
+MCA Golden Batch Project Trainin • 2026
 
