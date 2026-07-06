@@ -4,28 +4,19 @@
 
 Joel Gonsalves
 
-MCA Golden Batch Project Trainin • 2026
+MCA Golden Batch Project Training • 2026
 
 JWIGATO is a full-stack Food Delivery web application developed using Spring Boot Microservices. The project demonstrates user authentication, food ordering, REST API communication, and MySQL database integration through separate User and Order microservices.
 
 ## Screenshots
 
-### Home Page
-![Home Page](screenshots/home%20page.png)
-![Home Page 1](screenshots/home%20page%201.png)
-![Home Page 2](screenshots/home%20page%202.png)
-
-### Authentication
-![Login Page](screenshots/login%20page.png)
-![Register Page](screenshots/register%20page.png)
-
-### Menu
-![Menu Page](screenshots/menu%20page.png)
-![Menu Page 1](screenshots/menu%20page%201.png)
-![Menu Page 2](screenshots/menu%20page%202.png)
-
-### Orders
-![Orders Page](screenshots/orders%20page.png)
+| Home | Home 1 | Home 2 |
+|:---:|:---:|:---:|
+| <img src="screenshots/home%20page.png" alt="Home Page" width="100%"> | <img src="screenshots/home%20page%201.png" alt="Home Page 1" width="100%"> | <img src="screenshots/home%20page%202.png" alt="Home Page 2" width="100%"> |
+| **Menu** | **Menu 1** | **Menu 2** |
+| <img src="screenshots/menu%20page.png" alt="Menu Page" width="100%"> | <img src="screenshots/menu%20page%201.png" alt="Menu Page 1" width="100%"> | <img src="screenshots/menu%20page%202.png" alt="Menu Page 2" width="100%"> |
+| **Login** | **Register** | **Orders** |
+| <img src="screenshots/login%20page.png" alt="Login Page" width="100%"> | <img src="screenshots/register%20page.png" alt="Register Page" width="100%"> | <img src="screenshots/orders%20page.png" alt="Orders Page" width="100%"> |
 
 ## Features
 
@@ -38,7 +29,6 @@ JWIGATO is a full-stack Food Delivery web application developed using Spring Boo
 - MySQL Database
 - Docker
 - Responsive Bootstrap UI
-- Dark Theme with Neon Magenta Design
 
 ## Tech Stack
 
@@ -70,4 +60,4 @@ Order Service
 
 Joel Gonsalves
 
-MCA Golden Batch Project Trainin • 2026
+MCA Golden Batch Project Training • 2026
