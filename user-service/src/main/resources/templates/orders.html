@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Jwigato | My Orders</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+
+            background:
+                    radial-gradient(circle at top left,#40104f 0%,transparent 35%),
+                    radial-gradient(circle at bottom right,#180022 0%,transparent 40%),
+                    #09090d;
+
+            color:white;
+            min-height:100vh;
+
+        }
+
+        .navbar{
+
+            background:rgba(15,15,20,.75);
+
+            backdrop-filter:blur(20px);
+
+            border-bottom:1px solid rgba(255,0,200,.25);
+
+        }
+
+        .navbar-brand{
+
+            font-family:'Orbitron',sans-serif;
+
+            font-size:32px;
+
+            font-weight:800;
+
+            letter-spacing:3px;
+
+            color:#ff00c8!important;
+
+        }
+
+        .navbar .btn{
+
+            border-radius:30px;
+
+            font-weight:600;
+
+        }
+
+        .btn-light{
+
+            background:#1d1d24;
+
+            color:white;
+
+            border:1px solid rgba(255,0,200,.25);
+
+        }
+
+        .btn-light:hover{
+
+            background:#ff00c8;
+
+            color:white;
+
+        }
+
+        .btn-warning{
+
+            background:#ff00c8;
+
+            border:none;
+
+            color:white;
+
+        }
+
+        .btn-warning:hover{
+
+            background:#ff33d6;
+
+        }
+
+        .btn-dark{
+
+            background:#111116;
+
+            border:1px solid rgba(255,0,200,.25);
+
+        }
+
+        .hero{
+
+            margin:35px 0;
+
+            background:#16161d;
+
+            border-radius:25px;
+
+            padding:40px;
+
+            border:1px solid rgba(255,0,200,.2);
+
+            box-shadow:0 0 25px rgba(255,0,200,.15);
+
+        }
+
+        .hero h2{
+
+            color:#ff00c8;
+
+            font-weight:700;
+
+        }
+
+        .hero p{
+
+            color:#bbbbbb;
+
+        }
+
+        .stat-card{
+
+            background:#16161d;
+
+            border-radius:20px;
+
+            border:1px solid rgba(255,0,200,.2);
+
+            padding:30px;
+
+            text-align:center;
+
+            transition:.35s;
+
+        }
+
+        .stat-card:hover{
+
+            transform:translateY(-8px);
+
+            border-color:#ff00c8;
+
+            box-shadow:0 0 20px rgba(255,0,200,.3);
+
+        }
+
+        .orders{
+
+            background:linear-gradient(135deg,#2b1733,#16161d);
+
+        }
+
+        .spent{
+
+            background:linear-gradient(135deg,#32163f,#16161d);
+
+        }
+
+        .stat-card small{
+
+            color:#bfbfbf;
+
+            font-size:16px;
+
+        }
+
+        .stat-value{
+
+            margin-top:10px;
+
+            color:#ff00c8;
+
+            font-size:36px;
+
+            font-weight:700;
+
+        }
+
+        .table-card{
+
+            background:#16161d;
+
+            border-radius:25px;
+
+            border:1px solid rgba(255,0,200,.2);
+
+            overflow:hidden;
+
+            box-shadow:0 0 25px rgba(255,0,200,.12);
+
+        }
+
+        .card-body{
+
+            background:#16161d;
+
+            padding:0;
+
+        }
+
+        .table{
+
+            margin:0;
+
+            color:white;
+
+        }
+
+        .table thead{
+
+            background:#1f1f28;
+
+        }
+
+        .table th{
+
+            color:#ff00c8;
+
+            text-align:center;
+
+            border:none;
+
+            padding:20px;
+
+            font-weight:600;
+
+            letter-spacing:.5px;
+
+        }
+
+        .table td{
+
+            background:#1a1a22;
+
+            color:#ececec;
+
+            text-align:center;
+
+            vertical-align:middle;
+
+            border-color:#2d2d37;
+
+            padding:18px;
+
+        }
+
+        .table-hover tbody tr:hover td{
+
+            background:#242431;
+
+        }
+
+        .price{
+
+            color:#3dff8a;
+
+            font-size:18px;
+
+            font-weight:600;
+
+        }
+
+        #loading{
+
+            padding:60px;
+
+            color:#d5d5d5;
+
+        }
+
+        .spinner-border{
+
+            color:#ff00c8!important;
+
+        }
+
+        #error{
+
+            margin:25px;
+
+            background:#3a1825;
+
+            color:#ffd5e9;
+
+            border:1px solid rgba(255,0,200,.4);
+
+            border-radius:15px;
+
+        }
+
+        #empty{
+
+            margin:25px;
+
+            background:#221828;
+
+            color:white;
+
+            border:1px solid rgba(255,0,200,.4);
+
+            border-radius:15px;
+
+            text-align:center;
+
+            padding:35px;
+
+        }
+
+        #empty .btn{
+
+            margin-top:15px;
+
+            background:#ff00c8;
+
+            border:none;
+
+            border-radius:30px;
+
+            padding:10px 30px;
+
+        }
+
+        #empty .btn:hover{
+
+            background:#ff33d6;
+
+        }
+
+        .table-responsive{
+
+            border-radius:0 0 25px 25px;
+
+            overflow:hidden;
+
+        }
+
+        footer{
+
+            margin-top:60px;
+
+            padding:25px;
+
+            text-align:center;
+
+            color:#999;
+
+            border-top:1px solid rgba(255,0,200,.2);
+
+        }
+
+        .developer{
+
+            color:#ff00c8;
+
+            font-weight:600;
+
+            margin-bottom:8px;
+
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="/">
+            🍔 Jwigato
+        </a>
+
+        <div>
+
+            <a href="/" class="btn btn-light me-2">
+                Home
+            </a>
+
+            <a href="/menu" class="btn btn-warning me-2">
+                Menu
+            </a>
+
+            <a href="/loginPage" class="btn btn-dark">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="hero">
+
+        <h2>
+            📋 My Orders
+        </h2>
+
+        <p class="mb-0">
+
+            Welcome
+            <strong id="userName">Customer</strong>.
+            View all your previous orders below.
+
+        </p>
+
+    </div>
+
+    <div class="row mb-4">
+
+        <div class="col-md-6">
+
+            <div class="stat-card orders">
+
+                <small>Total Orders</small>
+
+                <div id="orderCount" class="stat-value">
+
+                    0
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="stat-card spent">
+
+                <small>Total Spent</small>
+
+                <div id="grandTotal" class="stat-value">
+
+                    ₹0.00
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card table-card">
+
+        <div class="card-body">
+
+            <div id="loading" class="text-center">
+
+                <div class="spinner-border text-primary"></div>
+
+                <h5 class="mt-3">
+
+                    Loading your orders...
+
+                </h5>
+
+            </div>
+
+            <div id="error" class="alert alert-danger d-none"></div>
+
+            <div id="empty" class="alert alert-warning d-none">
+
+                🍽️ You haven't placed any orders yet.
+
+                <br><br>
+
+                <a href="/menu" class="btn btn-primary">
+
+                    Browse Menu
+
+                </a>
+
+            </div>
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+
+                <tr>
+
+                    <th>Order ID</th>
+
+                    <th>Restaurant</th>
+
+                    <th>Food Item</th>
+
+                    <th>Quantity</th>
+
+                    <th>Total Price</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="ordersTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    const user = localStorage.getItem("userName");
+
+    if(user){
+
+        document.getElementById("userName").innerText=user;
+
+    }
+
+</script>
+
+<script src="/js/orders.js"></script>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded",function(){
+
+        const observer=setInterval(()=>{
+
+            const rows=document.querySelectorAll("#ordersTable tr").length;
+
+            document.getElementById("orderCount").innerText=rows;
+
+        },300);
+
+    });
+
+</script>
+
+</body>
+
+</html>

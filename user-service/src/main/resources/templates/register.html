@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Create Account | Jwigato</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+
+            background:#080808;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+
+        }
+
+        body::before{
+
+            content:"";
+            position:absolute;
+            width:650px;
+            height:650px;
+            background:#ff00c835;
+            filter:blur(170px);
+            top:-200px;
+            right:-180px;
+
+        }
+
+        body::after{
+
+            content:"";
+            position:absolute;
+            width:550px;
+            height:550px;
+            background:#8b5cf635;
+            filter:blur(170px);
+            bottom:-180px;
+            left:-180px;
+
+        }
+
+        .register-card{
+
+            width:470px;
+            background:rgba(18,18,18,.88);
+            backdrop-filter:blur(22px);
+            border:1px solid rgba(255,255,255,.08);
+            border-radius:30px;
+            padding:40px;
+            box-shadow:0 0 40px rgba(255,0,200,.25);
+            z-index:10;
+
+        }
+
+        .logo{
+
+            text-align:center;
+            font-size:46px;
+            margin-bottom:10px;
+
+        }
+
+        h2{
+
+            text-align:center;
+            color:white;
+            font-weight:700;
+
+        }
+
+        .subtitle{
+
+            text-align:center;
+            color:#999;
+            margin-bottom:35px;
+
+        }
+
+        .form-label{
+
+            color:#ddd;
+
+        }
+
+        .form-control{
+
+            background:#171717;
+            border:1px solid #333;
+            color:white;
+            height:52px;
+            border-radius:15px;
+
+        }
+
+        .form-control:focus{
+
+            background:#171717;
+            color:white;
+            border-color:#ff00c8;
+            box-shadow:0 0 15px rgba(255,0,200,.45);
+
+        }
+
+        .input-group-text{
+
+            background:#171717;
+            border:1px solid #333;
+            border-left:none;
+            cursor:pointer;
+            color:#ff00c8;
+
+        }
+
+        .btn-register{
+
+            height:55px;
+            border:none;
+            border-radius:15px;
+            background:#ff00c8;
+            font-weight:600;
+            font-size:17px;
+            color:white;
+            box-shadow:0 0 20px rgba(255,0,200,.5);
+            transition:.3s;
+
+        }
+
+        .btn-register:hover{
+
+            background:#ff25d1;
+            transform:translateY(-3px);
+            box-shadow:0 0 35px rgba(255,0,200,.7);
+
+        }
+
+        #message{
+
+            margin-top:20px;
+
+        }
+
+        hr{
+
+            border-color:#333;
+
+        }
+
+        .bottom{
+
+            text-align:center;
+            color:#999;
+
+        }
+
+        .bottom a{
+
+            color:#ff00c8;
+            text-decoration:none;
+
+        }
+
+        .bottom a:hover{
+
+            text-decoration:underline;
+
+        }
+
+        .back{
+
+            display:block;
+            margin-top:20px;
+            text-align:center;
+            text-decoration:none;
+            color:#bbb;
+
+        }
+
+        .back:hover{
+
+            color:#ff00c8;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="register-card">
+
+    <div class="logo">
+
+        🍜
+
+    </div>
+
+    <h2>
+
+        Create Account
+
+    </h2>
+
+    <p class="subtitle">
+
+        Join <span style="color:#ff00c8;">Jwigato</span>
+
+    </p>
+
+    <form id="registerForm">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Full Name
+
+            </label>
+
+            <input
+                    type="text"
+                    id="name"
+                    class="form-control"
+                    placeholder="Enter your name"
+                    required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Email Address
+
+            </label>
+
+            <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="Enter your email"
+                    required>
+
+        </div>
+
+        <div class="mb-4">
+
+            <label class="form-label">
+
+                Password
+
+            </label>
+
+            <div class="input-group">
+
+                <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        placeholder="Create a password"
+                        required>
+
+                <span
+                        class="input-group-text"
+                        onclick="togglePassword()">
+
+<i
+        id="eyeIcon"
+        class="bi bi-eye">
+
+</i>
+
+</span>
+
+            </div>
+
+        </div>
+
+        <input
+                type="hidden"
+                id="role"
+                value="CUSTOMER">
+
+        <button
+                id="registerBtn"
+                type="submit"
+                class="btn btn-register w-100">
+
+            Create Account
+
+        </button>
+
+    </form>
+
+    <div id="message"></div>
+
+    <hr>
+
+    <div class="bottom">
+
+        Already have an account?
+
+        <a href="/loginPage">
+
+            Login
+
+        </a>
+
+    </div>
+
+    <a href="/" class="back">
+
+        ← Back to Home
+
+    </a>
+
+</div>
+
+<script>
+
+    function togglePassword(){
+
+        const password=document.getElementById("password");
+        const eye=document.getElementById("eyeIcon");
+
+        if(password.type==="password"){
+
+            password.type="text";
+            eye.classList.replace("bi-eye","bi-eye-slash");
+
+        }else{
+
+            password.type="password";
+            eye.classList.replace("bi-eye-slash","bi-eye");
+
+        }
+
+    }
+
+</script>
+
+<script src="/js/register.js"></script>
+
+</body>
+
+</html>
